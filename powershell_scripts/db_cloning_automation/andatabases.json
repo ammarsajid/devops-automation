@@ -1,213 +1,240 @@
 {
-	"hu_stg": {
-		"resourcegroup": "AN-PREPROD",
-		"server": "an-stg.database.windows.net",
-		"dbname": "hu-stg-db"
-	},
-	"eta_stg": {
-		"resourcegroup": "AN-PREPROD",
-		"server": "an-stg.database.windows.net",
-		"dbname": "eta-stg-db"
-	},
-	"atlas_dev": {
-		"resourcegroup": "AN-PREPROD",
-		"server": "an-stg.database.windows.net",
-		"dbname": "atlas-dev-db"
-	},
-	"iac_stg": {
-		"resourcegroup": "AN-PREPROD",
-		"server": "an-stg.database.windows.net",
-		"dbname": "iac-stg-db"
-	},
-	"tip_stg": {
-		"resourcegroup": "AN-PREPROD",
-		"server": "an-stg.database.windows.net",
-		"dbname": "tip-stg-db"
-	},
-	"sbsn_stg": {
-		"resourcegroup": "AN-PREPROD",
-		"server": "an-stg.database.windows.net",
-		"dbname": "sbsn-stg-db"
-	},
-	"atlas_stg": {
-		"resourcegroup": "AN-PREPROD",
-		"server": "an-stg.database.windows.net",
-		"dbname": "atlas-stg-db"
-	},
-	"lacas_stg": {
-		"resourcegroup": "AN-PREPROD",
-		"server": "an-stg.database.windows.net",
-		"dbname": "lacas-stg-db"
-	},
-	"tmuc_stg": {
-		"resourcegroup": "AN-PREPROD",
-		"server": "an-stg.database.windows.net",
-		"dbname": "tmuc-stg-db"
-	},
-	"brains_stg": {
-		"resourcegroup": "AN-PREPROD",
-		"server": "an-stg.database.windows.net",
-		"dbname": "brain-stg-db"
-	},
-	"pide_stg": {
-		"resourcegroup": "AN-PREPROD",
-		"server": "an-stg.database.windows.net",
-		"dbname": "pide-stg"
-	},
-	"rlmc_stg": {
-		"resourcegroup": "AN-PREPROD",
-		"server": "an-stg.database.windows.net",
-		"dbname": "rlmc-stg"
-	},
-	"qarshi_stg": {
-		"resourcegroup": "AN-PREPROD",
-		"server": "an-stg.database.windows.net",
-		"dbname": "qarshi-stg"
-	},
-	"avicenna_stg": {
-		"resourcegroup": "AN-PREPROD",
-		"server": "an-stg.database.windows.net",
-		"dbname": "Avicenna-stg"
-	},
-	"ssuet_stg": {
-		"resourcegroup": "AN-PREPROD",
-		"server": "an-stg.database.windows.net",
-		"dbname": "ssuet-stag"
-	},
-	"stmu_stg1": {
-		"resourcegroup": "AN-PREPROD",
-		"server": "an-stg.database.windows.net",
-		"dbname": "stmu-stg"
-	},
-	"stmu_stg2": {
-		"resourcegroup": "AN-PREPROD",
-		"server": "an-stg.database.windows.net",
-		"dbname": "stmu-stg-2"
-	},
-	"ivs_stg": {
-		"resourcegroup": "AN-PREPROD",
-		"server": "an-stg.database.windows.net",
-		"dbname": "ivs-stg-db"
-	},
-	"sbsn_dev": {
-		"resourcegroup": "AN-PREPROD",
-		"server": "an-stg.database.windows.net",
-		"dbname": "sbsn-dev-db"
-	},
-	"educor_demo": {
-		"resourcegroup": "AN-PREPROD",
-		"server": "an-stg.database.windows.net",
-		"dbname": "educor-demo-db"
-	},
-	"cecos_stg": {
-		"resourcegroup": "AN-PREPROD",
-		"server": "an-stg.database.windows.net",
-		"dbname": "cecos-uat-db"
-	},
-	"tip_dev": {
-		"resourcegroup": "AN-PREPROD",
-		"server": "an-stg.database.windows.net",
-		"dbname": "tip-dev-db"
-	},
-	"Release_db": {
-		"resourcegroup": "AN-PREPROD",
-		"server": "an-stg.database.windows.net",
-		"dbname": "release-db"
-	},
-	"rmi_stg": {
-		"resourcegroup": "AN-PREPROD",
-		"server": "an-stg.database.windows.net",
-		"dbname": "rmi-stg-db"
-	},
-	"numl_demo": {
-		"resourcegroup": "AN-PROD",
-		"server": "an-prod.database.windows.net",
-		"dbname": "rmi-demo-db"
-	},	
-	"iac_prod": {
-		"resourcegroup": "AN-PROD",
-		"server": "an-prod.database.windows.net",
-		"dbname": "atlas-prod-db"
-	},
-	"atlas_prod": {
-		"resourcegroup": "AN-PROD",
-		"server": "an-prod.database.windows.net",
-		"dbname": "iac-prod-db"
-	},
-	"brains_prod": {
-		"resourcegroup": "AN-PROD",
-		"server": "an-prod.database.windows.net",
-		"dbname": "brains-prod-db"
-	},
-	"avicenna_prod": {
-		"resourcegroup": "AN-PROD",
-		"server": "an-prod.database.windows.net",
-		"dbname": "Avicenna-prod"
-	},
-	"tmuc_prod": {
-		"resourcegroup": "AN-PROD",
-		"server": "an-prod.database.windows.net",
-		"dbname": "tmuc-prod-db"
-	},
-	"umdc_prod": {
-		"resourcegroup": "AN-PROD",
-		"server": "an-prod.database.windows.net",
-		"dbname": "umdc-prod"
-	},
-	"stmu_prod": {
-		"resourcegroup": "AN-PROD",
-		"server": "an-prod.database.windows.net",
-		"dbname": "stmu-prod-db"
-	},
-	"qarshi_prod": {
-		"resourcegroup": "AN-PROD",
-		"server": "an-prod.database.windows.net",
-		"dbname": "qarshi-prod-db"
-	},
-	"ssuet_prod": {
-		"resourcegroup": "AN-PROD",
-		"server": "an-prod.database.windows.net",
-		"dbname": "ssuet-prod-db"
-	},
-	"rmi_prod": {
-		"resourcegroup": "AN-PROD",
-		"server": "an-prod.database.windows.net",
-		"dbname": "rmi-prod-db"
-	},
-	"rlmc_prod": {
-		"resourcegroup": "AN-PROD",
-		"server": "an-prod.database.windows.net",
-		"dbname": "rlmc-prod"
-	},
-	"ivs_prod": {
-		"resourcegroup": "AN-PROD",
-		"server": "an-prod.database.windows.net",
-		"dbname": "ivs-prod-db"
-	},
+	"Databases": {
+	
+		"hu_stg": {
+			"resourcegroup": "AN-PREPROD",
+			"server": "an-stg.database.windows.net",
+			"dbname": "hu-stg-db"
+		},
+		"eta_stg": {
+			"resourcegroup": "AN-PREPROD",
+			"server": "an-stg.database.windows.net",
+			"dbname": "eta-stg-db"
+		},
+		"atlas_dev": {
+			"resourcegroup": "AN-PREPROD",
+			"server": "an-stg.database.windows.net",
+			"dbname": "atlas-dev-db"
+		},
+		"iac_stg": {
+			"resourcegroup": "AN-PREPROD",
+			"server": "an-stg.database.windows.net",
+			"dbname": "iac-stg-db"
+		},
+		"tip_stg": {
+			"resourcegroup": "AN-PREPROD",
+			"server": "an-stg.database.windows.net",
+			"dbname": "tip-stg-db"
+		},
+		"sbsn_stg": {
+			"resourcegroup": "AN-PREPROD",
+			"server": "an-stg.database.windows.net",
+			"dbname": "sbsn-stg-db"
+		},
+		"atlas_stg": {
+			"resourcegroup": "AN-PREPROD",
+			"server": "an-stg.database.windows.net",
+			"dbname": "atlas-stg-db"
+		},
+		"lacas_stg": {
+			"resourcegroup": "AN-PREPROD",
+			"server": "an-stg.database.windows.net",
+			"dbname": "lacas-stg-db"
+		},
+		"tmuc_stg": {
+			"resourcegroup": "AN-PREPROD",
+			"server": "an-stg.database.windows.net",
+			"dbname": "tmuc-stg-db"
+		},
+		"brains_stg": {
+			"resourcegroup": "AN-PREPROD",
+			"server": "an-stg.database.windows.net",
+			"dbname": "brain-stg-db"
+		},
+		"pide_stg": {
+			"resourcegroup": "AN-PREPROD",
+			"server": "an-stg.database.windows.net",
+			"dbname": "pide-stg"
+		},
+		"rlmc_stg": {
+			"resourcegroup": "AN-PREPROD",
+			"server": "an-stg.database.windows.net",
+			"dbname": "rlmc-stg"
+		},
+		"qarshi_stg": {
+			"resourcegroup": "AN-PREPROD",
+			"server": "an-stg.database.windows.net",
+			"dbname": "qarshi-stg"
+		},
+		"avicenna_stg": {
+			"resourcegroup": "AN-PREPROD",
+			"server": "an-stg.database.windows.net",
+			"dbname": "Avicenna-stg"
+		},
+		"ssuet_stg": {
+			"resourcegroup": "AN-PREPROD",
+			"server": "an-stg.database.windows.net",
+			"dbname": "ssuet-stag"
+		},
+		"stmu_stg1": {
+			"resourcegroup": "AN-PREPROD",
+			"server": "an-stg.database.windows.net",
+			"dbname": "stmu-stg"
+		},
+		"stmu_stg2": {
+			"resourcegroup": "AN-PREPROD",
+			"server": "an-stg.database.windows.net",
+			"dbname": "stmu-stg-2"
+		},
+		"ivs_stg": {
+			"resourcegroup": "AN-PREPROD",
+			"server": "an-stg.database.windows.net",
+			"dbname": "ivs-stg-db"
+		},
+		"sbsn_dev": {
+			"resourcegroup": "AN-PREPROD",
+			"server": "an-stg.database.windows.net",
+			"dbname": "sbsn-dev-db"
+		},
+		"educor_demo": {
+			"resourcegroup": "AN-PREPROD",
+			"server": "an-stg.database.windows.net",
+			"dbname": "educor-demo-db"
+		},
+		"cecos_stg": {
+			"resourcegroup": "AN-PREPROD",
+			"server": "an-stg.database.windows.net",
+			"dbname": "cecos-uat-db"
+		},
+		"tip_dev": {
+			"resourcegroup": "AN-PREPROD",
+			"server": "an-stg.database.windows.net",
+			"dbname": "tip-dev-db"
+		},
+		"Release_db": {
+			"resourcegroup": "AN-PREPROD",
+			"server": "an-stg.database.windows.net",
+			"dbname": "release-db"
+		},
+		"rmi_stg": {
+			"resourcegroup": "AN-PREPROD",
+			"server": "an-stg.database.windows.net",
+			"dbname": "rmi-stg-db"
+		},
+		"numl_demo": {
+			"resourcegroup": "AN-PROD",
+			"server": "an-prod.database.windows.net",
+			"dbname": "rmi-demo-db"
+		},	
+		"iac_prod": {
+			"resourcegroup": "AN-PROD",
+			"server": "an-prod.database.windows.net",
+			"dbname": "atlas-prod-db"
+		},
+		"atlas_prod": {
+			"resourcegroup": "AN-PROD",
+			"server": "an-prod.database.windows.net",
+			"dbname": "iac-prod-db"
+		},
+		"brains_prod": {
+			"resourcegroup": "AN-PROD",
+			"server": "an-prod.database.windows.net",
+			"dbname": "brains-prod-db"
+		},
+		"avicenna_prod": {
+			"resourcegroup": "AN-PROD",
+			"server": "an-prod.database.windows.net",
+			"dbname": "Avicenna-prod"
+		},
+		"tmuc_prod": {
+			"resourcegroup": "AN-PROD",
+			"server": "an-prod.database.windows.net",
+			"dbname": "tmuc-prod-db"
+		},
+		"umdc_prod": {
+			"resourcegroup": "AN-PROD",
+			"server": "an-prod.database.windows.net",
+			"dbname": "umdc-prod"
+		},
+		"stmu_prod": {
+			"resourcegroup": "AN-PROD",
+			"server": "an-prod.database.windows.net",
+			"dbname": "stmu-prod-db"
+		},
+		"qarshi_prod": {
+			"resourcegroup": "AN-PROD",
+			"server": "an-prod.database.windows.net",
+			"dbname": "qarshi-prod-db"
+		},
+		"ssuet_prod": {
+			"resourcegroup": "AN-PROD",
+			"server": "an-prod.database.windows.net",
+			"dbname": "ssuet-prod-db"
+		},
+		"rmi_prod": {
+			"resourcegroup": "AN-PROD",
+			"server": "an-prod.database.windows.net",
+			"dbname": "rmi-prod-db"
+		},
+		"rlmc_prod": {
+			"resourcegroup": "AN-PROD",
+			"server": "an-prod.database.windows.net",
+			"dbname": "rlmc-prod"
+		},
+		"ivs_prod": {
+			"resourcegroup": "AN-PROD",
+			"server": "an-prod.database.windows.net",
+			"dbname": "ivs-prod-db"
+		},
 
-	"cecos_prod": {
-		"resourcegroup": "AN-PROD",
-		"server": "an-prod.database.windows.net",
-		"dbname": "cecos-prod-db"
+		"cecos_prod": {
+			"resourcegroup": "AN-PROD",
+			"server": "an-prod.database.windows.net",
+			"dbname": "cecos-prod-db"
+		},
+		"lacas_prod": {
+			"resourcegroup": "AN-PROD",
+			"server": "an-prod.database.windows.net",
+			"dbname": "lacas-prod-db"
+		},
+		"pide_prod": {
+			"resourcegroup": "AN-PROD",
+			"server": "an-prod.database.windows.net",
+			"dbname": "pide-prod-db"
+		},
+		"eta_prod": {
+			"resourcegroup": "AN-PROD",
+			"server": "an-prod.database.windows.net",
+			"dbname": "eta-prod-db"
+		},
+		"sbsn_prod": {
+			"resourcegroup": "AN-PROD",
+			"server": "an-prod.database.windows.net",
+			"dbname": "sbsn-prod-db"
+		},
+		"testing_stg": {
+			"resourcegroup": "AN-PREPROD",
+			"server": "an-stg",
+			"dbname": "testing-cloning-auto-stg"
+		},
+		"testing_prod": {
+			"resourcegroup": "AN-PROD",
+			"server": "an-prod",
+			"dbname": "testing-cloning-auto"
+		}
 	},
-	"lacas_prod": {
-		"resourcegroup": "AN-PROD",
-		"server": "an-prod.database.windows.net",
-		"dbname": "lacas-prod-db"
+	"Credentials" : {
+		"an-prod": {
+			"username": "proddbadmin",
+			"password": "SgM3qpMHutUtpF",
+			"ElasticPoolName":  "AN-Prod-Pool"
+		},
+		"an-stg": {
+			"username": "dbadmin",
+			"password": "stDSHklLxoq13",
+			"ElasticPoolName":  "AN-Staging-Pool"
+		}
 	},
-	"pide_prod": {
-		"resourcegroup": "AN-PROD",
-		"server": "an-prod.database.windows.net",
-		"dbname": "pide-prod-db"
-	},
-	"eta_prod": {
-		"resourcegroup": "AN-PROD",
-		"server": "an-prod.database.windows.net",
-		"dbname": "eta-prod-db"
-	},
-	"sbsn_prod": {
-		"resourcegroup": "AN-PROD",
-		"server": "an-prod.database.windows.net",
-		"dbname": "sbsn-prod-db"
-	}
+	"subscriptionId": "cac601c4-4a4f-4aa3-939e-2923e23b1cd6"
+	
 }
