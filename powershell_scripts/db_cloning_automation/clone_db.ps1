@@ -28,13 +28,13 @@ $exportRequest = New-AzureRmSqlDatabaseExport -ResourceGroupName $allDbsJson.Dat
                     -AdministratorLogin $allDbsJson.Credentials.($allDbsJson.Databases.$ddb.server).username `
                     -AdministratorLoginPassword ($allDbsJson.Credentials.($allDbsJson.Databases.$ddb.server).password | ConvertTo-SecureString -AsPlainText -Force )
 
-Write-Host "Backup is in progress for" $allDbsJson.Databases.$ddb.dbname
+Write-Host "Backup of " $allDbsJson.Databases.$ddb.dbname " is in progress" 
 $exportStatus = Get-AzureRmSqlDatabaseImportExportStatus -OperationStatusLink $exportRequest.OperationStatusLink
 while ($exportStatus.Status -ne 'Succeeded')
 {
     start-sleep -s 5
     $exportStatus = Get-AzureRmSqlDatabaseImportExportStatus -OperationStatusLink $exportRequest.OperationStatusLink
-    Write-Host "Backup is in progress for" $allDbsJson.Databases.$ddb.dbname
+    Write-Host "Backup of " $allDbsJson.Databases.$ddb.dbname " is in progress" 
 }
 
 Write-Host "Backup completed, URL:" $BacpacUri -ForegroundColor Green
@@ -51,3 +51,13 @@ $databasecopy = New-AzureRmSqlDatabaseCopy -ResourceGroupName $allDbsJson.Databa
                     -DatabaseName $allDbsJson.Databases.$sdb.dbname -CopyResourceGroupName $allDbsJson.Databases.$ddb.resourcegroup `
                     -CopyServerName $allDbsJson.Databases.$ddb.server -CopyDatabaseName $allDbsJson.Databases.$ddb.dbname `
                     -ServiceObjectiveName "S0"
+
+# Adding to the respective elastic pool
+if ($allDbsJson.Credentials.($allDbsJson.Databases.$ddb.server).ElasticPoolName -ne $null)
+{
+    Set-AzureRmSqlDatabase -ResourceGroupName "AN-PREPROD" `
+    -ServerName $allDbsJson.Databases.$ddb.server `
+    -DatabaseName $allDbsJson.Databases.$ddb.dbname `
+    -ElasticPoolName $allDbsJson.Credentials.($allDbsJson.Databases.$ddb.server).ElasticPoolName
+}
+

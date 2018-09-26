@@ -217,6 +217,11 @@
 			"server": "an-stg",
 			"dbname": "testing-cloning-auto-stg"
 		},
+		"testing_dev": {
+			"resourcegroup": "AN-PREPROD",
+			"server": "an-devserver",
+			"dbname": "testing-cloning-auto-dev"
+		},
 		"testing_prod": {
 			"resourcegroup": "AN-PROD",
 			"server": "an-prod",
@@ -233,6 +238,11 @@
 			"username": "dbadmin",
 			"password": "stDSHklLxoq13",
 			"ElasticPoolName":  "AN-Staging-Pool"
+		},
+		"an-devserver": {
+			"username": "devdbadmin",
+			"password": "yeDmHKlXxoq13",
+			"ElasticPoolName":  ""
 		}
 	},
 	"subscriptionId": "cac601c4-4a4f-4aa3-939e-2923e23b1cd6"
