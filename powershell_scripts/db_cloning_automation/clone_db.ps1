@@ -28,7 +28,7 @@ $exportRequest = New-AzureRmSqlDatabaseExport -ResourceGroupName $allDbsJson.Dat
                     -AdministratorLogin $allDbsJson.Credentials.($allDbsJson.Databases.$ddb.server).username `
                     -AdministratorLoginPassword ($allDbsJson.Credentials.($allDbsJson.Databases.$ddb.server).password | ConvertTo-SecureString -AsPlainText -Force )
 
-Write-Host "Backup of " $allDbsJson.Databases.$ddb.dbname " is in progress" 
+Write-Host "Backup of" $allDbsJson.Databases.$ddb.dbname "is in progress" 
 $exportStatus = Get-AzureRmSqlDatabaseImportExportStatus -OperationStatusLink $exportRequest.OperationStatusLink
 while ($exportStatus.Status -ne 'Succeeded')
 {
@@ -44,7 +44,7 @@ Write-Host "Deleting database" $allDbsJson.Databases.$ddb.dbname -ForegroundColo
 Remove-AzureRmSqlDatabase -ResourceGroupName $allDbsJson.Databases.$ddb.resourcegroup -ServerName $allDbsJson.Databases.$ddb.server `
     -DatabaseName $allDbsJson.Databases.$ddb.dbname -Force
 
-Write-Host "Deleting database" $allDbsJson.Databases.$ddb.dbname -ForegroundColor Yellow
+Write-Host "Copying database to destination" -ForegroundColor Yellow
 
 # Copy source database to the target server
 $databasecopy = New-AzureRmSqlDatabaseCopy -ResourceGroupName $allDbsJson.Databases.$sdb.resourcegroup -ServerName $allDbsJson.Databases.$sdb.server `
@@ -53,7 +53,8 @@ $databasecopy = New-AzureRmSqlDatabaseCopy -ResourceGroupName $allDbsJson.Databa
                     -ServiceObjectiveName "S0"
 
 # Adding to the respective elastic pool
-if ($allDbsJson.Credentials.($allDbsJson.Databases.$ddb.server).ElasticPoolName -ne $null)
+Write-Host "Adding database to Elastic Pool if any" -ForegroundColor Yellow
+if ($allDbsJson.Credentials.($allDbsJson.Databases.$ddb.server).ElasticPoolName -ne "NA")
 {
     Set-AzureRmSqlDatabase -ResourceGroupName "AN-PREPROD" `
     -ServerName $allDbsJson.Databases.$ddb.server `
