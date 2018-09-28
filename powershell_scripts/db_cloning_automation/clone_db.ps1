@@ -5,10 +5,19 @@ param(
 [Parameter(Mandatory=$False)]
 [string]$sdb,
 [Parameter(Mandatory=$False)]
-[switch]$backup_only,
+[switch]$backupOnly,
 [Parameter(Mandatory=$False)]
-[switch]$new
+[switch]$new,
+
+[Parameter(Mandatory=$True)]
+[ValidateSet('an','tmx','vic')]
+[System.String]$sub
+
+
 )
+
+Set-StrictMode -Version Latest
+$ErrorActionPreference = "Stop"
 
 # Getting database information from json file
 $curDir = Split-Path -Path $MyInvocation.MyCommand.Definition -Parent
@@ -44,11 +53,9 @@ if(-not($new))
     }
 
     Write-Host "Backup completed, URL:" $BacpacUri -ForegroundColor Green
-
 }
 
-
-if(-not($backup_only))
+if(-not($backupOnly))
 {
     if(-not($new))
     {
