@@ -65,14 +65,13 @@ if(-not($backup))
                         -CopyServerName $allDbsJson.Databases.$ddb.server -CopyDatabaseName $allDbsJson.Databases.$ddb.dbname `
                         -ServiceObjectiveName "S0"
 
-    start-sleep -s 5
+    start-sleep -s 1
     # Adding to the respective elastic pool
     Write-Host "Adding database to Elastic Pool if any" -ForegroundColor Yellow
     if ($allDbsJson.Credentials.($allDbsJson.Databases.$ddb.server).ElasticPoolName -ne "NA")
     {
-        Set-AzureRmSqlDatabase -ResourceGroupName "AN-PREPROD" `
-        -ServerName $allDbsJson.Databases.$ddb.server `
-        -DatabaseName $allDbsJson.Databases.$ddb.dbname `
+        Set-AzureRmSqlDatabase -ResourceGroupName $allDbsJson.Databases.$ddb.resourcegroup `
+        -ServerName $allDbsJson.Databases.$ddb.server -DatabaseName $allDbsJson.Databases.$ddb.dbname `
         -ElasticPoolName $allDbsJson.Credentials.($allDbsJson.Databases.$ddb.server).ElasticPoolName
     }
 
