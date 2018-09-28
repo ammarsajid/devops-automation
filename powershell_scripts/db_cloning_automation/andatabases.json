@@ -226,6 +226,11 @@
 			"resourcegroup": "AN-PROD",
 			"server": "an-prod",
 			"dbname": "testing-cloning-auto"
+		},
+		"testing_create": {
+			"resourcegroup": "AN-PREPROD",
+			"server": "an-stg",
+			"dbname": "auto-create-db"
 		}
 	},
 	"Credentials" : {
