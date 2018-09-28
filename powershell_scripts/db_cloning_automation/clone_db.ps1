@@ -5,7 +5,7 @@ param(
 [Parameter(Mandatory=$False)]
 [string]$sdb,
 [Parameter(Mandatory=$False)]
-[switch]$backup,
+[switch]$backup_only,
 [Parameter(Mandatory=$False)]
 [switch]$new
 )
@@ -17,17 +17,16 @@ $allDbsJson = ConvertFrom-Json "$(get-content $dbFilePath)"
 
 # Login to Azure Account
 #Login-AzureRmAccount
-Select-AzureRmSubscription -SubscriptionID $allDbsJson.subscriptionId
+Select-AzureRmSubscription -SubscriptionID $allDbsJson.SubscriptionId
 
 if(-not($new))
 {
     # Storage account info to store BACPAC
-    $BaseStorageUri = "https://ancloudops.blob.core.windows.net/dbbackups/"
-    $StorageKeytype = "StorageAccessKey"
-    $StorageKey = "VHt9S600ZjY4qfUb0iWyC6Rswf6uVDSsoIIicY4n5GDyiIjJ/rE4GRV9meAZvk9L97IqzNfQr2m1u51beCP2wQ=="
+    $BaseStorageUri = $allDbsJson.BaseStorageUri
+    $StorageKeytype = $allDbsJson.StorageKeytype
+    $StorageKey = $allDbsJson.StorageKey
     $bacpacFilename = $allDbsJson.Databases.$ddb.dbname + (Get-Date).ToString("yyyy-MM-dd-HH-mm") + ".bacpac"
     $BacpacUri = $BaseStorageUri + $bacpacFilename
-
 
     # exporting db to bacpac
     $exportRequest = New-AzureRmSqlDatabaseExport -ResourceGroupName $allDbsJson.Databases.$ddb.resourcegroup $allDbsJson.Databases.$ddb.server `
@@ -41,7 +40,7 @@ if(-not($new))
     {
         start-sleep -s 5
         $exportStatus = Get-AzureRmSqlDatabaseImportExportStatus -OperationStatusLink $exportRequest.OperationStatusLink
-        Write-Host "Backup of " $allDbsJson.Databases.$ddb.dbname " is in progress" 
+        Write-Host "Backup of" $allDbsJson.Databases.$ddb.dbname "is in progress" 
     }
 
     Write-Host "Backup completed, URL:" $BacpacUri -ForegroundColor Green
@@ -49,7 +48,7 @@ if(-not($new))
 }
 
 
-if(-not($backup))
+if(-not($backup_only))
 {
     if(-not($new))
     {
