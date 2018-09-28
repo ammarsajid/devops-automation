@@ -215,22 +215,22 @@
 		"testing_stg": {
 			"resourcegroup": "AN-PREPROD",
 			"server": "an-stg",
-			"dbname": "testing-cloning-auto-stg"
+			"dbname": "auto-cloning-stg"
 		},
 		"testing_dev": {
 			"resourcegroup": "AN-PREPROD",
 			"server": "an-devserver",
-			"dbname": "testing-cloning-auto-dev"
+			"dbname": "auto-cloning-dev"
 		},
 		"testing_prod": {
 			"resourcegroup": "AN-PROD",
 			"server": "an-prod",
-			"dbname": "testing-cloning-auto"
+			"dbname": "auto-cloning-prod"
 		},
 		"testing_create": {
 			"resourcegroup": "AN-PREPROD",
 			"server": "an-stg",
-			"dbname": "auto-create-db"
+			"dbname": "auto-cloning-create"
 		}
 	},
 	"Credentials" : {
