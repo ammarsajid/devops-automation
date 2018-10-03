@@ -8,11 +8,12 @@ param(
 [switch]$backupOnly,
 [Parameter(Mandatory=$False)]
 [switch]$new,
-
 [Parameter(Mandatory=$True)]
-[ValidateSet('an','tmx','vic')]
-[System.String]$sub
-
+[ValidateSet('an','tmx','vic','sp')]
+[System.String]$dsub,
+[Parameter(Mandatory=$False)]
+[ValidateSet('an','tmx','vic','sp')]
+[System.String]$ssub
 
 )
 
@@ -21,27 +22,30 @@ $ErrorActionPreference = "Stop"
 
 # Getting database information from json file
 $curDir = Split-Path -Path $MyInvocation.MyCommand.Definition -Parent
-$dbFilePath = $curDir + "\andatabases.json"
+
+$dbFilePath = $curDir + "\"+$dsub+ ".json"
+$dbFilePath = "D:\Techlogix\GitLab\Cloudops-09-25-18\cloudops\powershell_scripts\db_cloning_automation\an.json"
 $allDbsJson = ConvertFrom-Json "$(get-content $dbFilePath)"
 
-# Login to Azure Account
-#Login-AzureRmAccount
+#Login to Azure Account
+# Login-AzureRmAccount
 Select-AzureRmSubscription -SubscriptionID $allDbsJson.SubscriptionId
 
 if(-not($new))
 {
     # Storage account info to store BACPAC
-    $BaseStorageUri = $allDbsJson.BaseStorageUri
-    $StorageKeytype = $allDbsJson.StorageKeytype
-    $StorageKey = $allDbsJson.StorageKey
+    # https://ancloudops.blob.core.windows.net/dbbackups2/BRAINS-prod-from-zain.bacpac
+    $BaseStorageUri = "https://" + $allDbsJson.StorageAccName + ".blob.core.windows.net/" + $allDbsJson.StorageContainer + "/"
+    #$StorageKeytype = $allDbsJson.StorageKeytype
+    #$StorageKey = $allDbsJson.StorageKey
     $bacpacFilename = $allDbsJson.Databases.$ddb.dbname + (Get-Date).ToString("yyyy-MM-dd-HH-mm") + ".bacpac"
-    $BacpacUri = $BaseStorageUri + $bacpacFilename
+    $BacpacUri = $BaseStorageUri +"-"+ $bacpacFilename
 
     # exporting db to bacpac
     $exportRequest = New-AzureRmSqlDatabaseExport -ResourceGroupName $allDbsJson.Databases.$ddb.resourcegroup $allDbsJson.Databases.$ddb.server `
-                        -DatabaseName $allDbsJson.Databases.$ddb.dbname -StorageKeytype $StorageKeytype -StorageKey $StorageKey -StorageUri $BacpacUri `
-                        -AdministratorLogin $allDbsJson.Credentials.($allDbsJson.Databases.$ddb.server).username `
-                        -AdministratorLoginPassword ($allDbsJson.Credentials.($allDbsJson.Databases.$ddb.server).password | ConvertTo-SecureString -AsPlainText -Force )
+                        -DatabaseName $allDbsJson.Databases.$ddb.dbname -StorageKeytype $allDbsJson.StorageKeytype -StorageKey $allDbsJson.StorageKey `
+                        -StorageUri $BacpacUri -AdministratorLogin $allDbsJson.Server_credentials.($allDbsJson.Databases.$ddb.server).username `
+                        -AdministratorLoginPassword ($allDbsJson.Server_credentials.($allDbsJson.Databases.$ddb.server).password | ConvertTo-SecureString -AsPlainText -Force )
 
     Write-Host "Backup of" $allDbsJson.Databases.$ddb.dbname "is in progress" 
     $exportStatus = Get-AzureRmSqlDatabaseImportExportStatus -OperationStatusLink $exportRequest.OperationStatusLink
@@ -66,6 +70,8 @@ if(-not($backupOnly))
     Write-Host "Copying database to destination" -ForegroundColor Yellow
 
     # Copy source database to the target server
+
+
     $databasecopy = New-AzureRmSqlDatabaseCopy -ResourceGroupName $allDbsJson.Databases.$sdb.resourcegroup -ServerName $allDbsJson.Databases.$sdb.server `
                         -DatabaseName $allDbsJson.Databases.$sdb.dbname -CopyResourceGroupName $allDbsJson.Databases.$ddb.resourcegroup `
                         -CopyServerName $allDbsJson.Databases.$ddb.server -CopyDatabaseName $allDbsJson.Databases.$ddb.dbname `
@@ -74,11 +80,12 @@ if(-not($backupOnly))
     start-sleep -s 1
     # Adding to the respective elastic pool
     Write-Host "Adding database to Elastic Pool if any" -ForegroundColor Yellow
-    if ($allDbsJson.Credentials.($allDbsJson.Databases.$ddb.server).ElasticPoolName -ne "NA")
+    if ($allDbsJson.Server_credentials.($allDbsJson.Databases.$ddb.server).ElasticPoolName -ne "NA")
     {
         Set-AzureRmSqlDatabase -ResourceGroupName $allDbsJson.Databases.$ddb.resourcegroup `
         -ServerName $allDbsJson.Databases.$ddb.server -DatabaseName $allDbsJson.Databases.$ddb.dbname `
-        -ElasticPoolName $allDbsJson.Credentials.($allDbsJson.Databases.$ddb.server).ElasticPoolName
+        -ElasticPoolName $allDbsJson.Server_credentials.($allDbsJson.Databases.$ddb.server).ElasticPoolName
     }
+    
 
 }

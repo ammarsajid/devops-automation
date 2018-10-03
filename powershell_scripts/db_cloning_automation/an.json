@@ -1,6 +1,7 @@
 {
 	"SubscriptionId": "cac601c4-4a4f-4aa3-939e-2923e23b1cd6",
-	"BaseStorageUri": "https://ancloudops.blob.core.windows.net/dbbackups/",
+	"StorageAccName": "ancloudops",
+	"StorageContainer": "dbbackups",
 	"StorageKeytype": "StorageAccessKey",
 	"StorageKey": "VHt9S600ZjY4qfUb0iWyC6Rswf6uVDSsoIIicY4n5GDyiIjJ/rE4GRV9meAZvk9L97IqzNfQr2m1u51beCP2wQ==",
 	"Databases": {
@@ -237,7 +238,7 @@
 			"dbname": "auto-cloning-create"
 		}
 	},
-	"Credentials" : {
+	"Server_credentials" : {
 		"an-prod": {
 			"username": "proddbadmin",
 			"password": "SgM3qpMHutUtpF",
