@@ -28,7 +28,7 @@ $allDbsJson = ConvertFrom-Json "$(get-content $dbFilePath)"
 
 #Login to Azure Account
 
-# Login-AzureRmAccount
+Login-AzureRmAccount
 Select-AzureRmSubscription -SubscriptionID $allDbsJson.SubscriptionId
 
 if(-not($new))
@@ -38,8 +38,8 @@ if(-not($new))
     $bacpacFilename = $allDbsJson.Databases.$ddb.dbname + "-" + (Get-Date).ToString("yyyy-MM-dd-HH-mm") + ".bacpac"
     $BacpacUri = $BaseStorageUri + $bacpacFilename
     $storageContextDest = New-AzureStorageContext -StorageAccountName $allDbsJson.StorageAccName -StorageAccountKey $allDbsJson.StorageKey
+
     # exporting db to bacpac
-    
     $exportRequest = New-AzureRmSqlDatabaseExport -ResourceGroupName $allDbsJson.Databases.$ddb.resourcegroup $allDbsJson.Databases.$ddb.server `
                         -DatabaseName $allDbsJson.Databases.$ddb.dbname -StorageKeytype $allDbsJson.StorageKeytype -StorageKey $allDbsJson.StorageKey `
                         -StorageUri $BacpacUri -AdministratorLogin $allDbsJson.Server_credentials.($allDbsJson.Databases.$ddb.server).username `
@@ -53,7 +53,6 @@ if(-not($new))
         $exportStatus = Get-AzureRmSqlDatabaseImportExportStatus -OperationStatusLink $exportRequest.OperationStatusLink
         Write-Host "Backup of" $allDbsJson.Databases.$ddb.dbname "is in progress" 
     }
-
     Write-Host "Backup completed, URL:" $BacpacUri -ForegroundColor Green
 }
 
@@ -111,7 +110,7 @@ if(-not($backupOnly))
         $impStatus = Get-AzureRmSqlDatabaseImportExportStatus -OperationStatusLink $importRequest.OperationStatusLink
         while ($impStatus.Status -ne 'Succeeded')
         {
-            Write-Host "Backup of " $($allDbsJson.Databases.$ddb.dbname) "is in progress" 
+            Write-Host "Restoration of" $($allDbsJson.Databases.$ddb.dbname) "is in progress" 
             start-sleep -Milliseconds 300
             $impStatus = Get-AzureRmSqlDatabaseImportExportStatus -OperationStatusLink $importRequest.OperationStatusLink
             
