@@ -1,0 +1,28 @@
+{
+	"SubscriptionId": "112667f3-b281-4ede-a2f3-537bbe759911",
+	"StorageAccName": "cloudopsinternal",
+	"StorageContainer": "dbbackups",
+	"StorageKeytype": "StorageAccessKey",
+	"StorageKey": "DG3QGPbJexaIBU9B29NF4CcnOjD+Mg/CLyxY9x/N5yiZ3/gnvSM8k0dM+aIBgUKdKnJU7XxfNAHbCQlTrie+QQ==",
+	"Databases": {
+
+		"testing_build": {
+			"resourcegroup": "TECHXDBS",
+			"server": "techlogix",
+			"dbname": "auto-cloning-build"
+		},
+		"testing_auto_copy": {
+			"resourcegroup": "TECHXDBS",
+			"server": "techlogix",
+			"dbname": "auto-copy-test1"
+		}
+	},
+	"Server_credentials" : {
+		"techlogix": {
+			"username": "techxadmin",
+			"password": "tDnYJcBEPN9eU",
+			"ElasticPoolName":  "techlogix-build-pool"
+		}
+	}	
+	
+}
