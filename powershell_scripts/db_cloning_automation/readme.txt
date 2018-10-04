@@ -24,3 +24,16 @@ Optional Parameters:
 - new
 	This parameter is used when you want to create a new database from an existing source database.
 
+Examples:
+Just backup of a Database
+> .\clone_db.ps1 -dsub an -ddb testing_stg -backupOnly
+
+Create a new database from an existing
+> .\clone_db.ps1 -dsub sp -ddb testing_build2 -sdb testing_build -new
+
+Clone from source to destination database within same subscription
+> .\clone_db.ps1 -dsub an -sdb testing_prod -ddb testing_stg
+
+Clone database from source subscription to destination subscription
+> .\clone_db.ps1 -dsub an -ddb testing_stg -ssub sp -sdb testing_build
+
