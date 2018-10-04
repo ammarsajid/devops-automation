@@ -11,10 +11,10 @@
 			"server": "techlogix",
 			"dbname": "auto-cloning-build"
 		},
-		"testing_auto_copy": {
+		"testing_build2": {
 			"resourcegroup": "TECHXDBS",
 			"server": "techlogix",
-			"dbname": "auto-copy-test1"
+			"dbname": "auto-cloning-build2"
 		}
 	},
 	"Server_credentials" : {

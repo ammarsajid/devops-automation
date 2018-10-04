@@ -27,7 +27,6 @@ $dbFilePath = $curDir + "\"+$dsub+ ".json"
 $allDbsJson = ConvertFrom-Json "$(get-content $dbFilePath)"
 
 #Login to Azure Account
-
 Login-AzureRmAccount
 Select-AzureRmSubscription -SubscriptionID $allDbsJson.SubscriptionId
 
@@ -62,12 +61,11 @@ if(-not($backupOnly))
     {
         Write-Host "Deleting database" $allDbsJson.Databases.$ddb.dbname -ForegroundColor Yellow
         Remove-AzureRmSqlDatabase -ResourceGroupName $allDbsJson.Databases.$ddb.resourcegroup -ServerName $allDbsJson.Databases.$ddb.server `
-            -DatabaseName $allDbsJson.Databases.$ddb.dbname -Force
+            -DatabaseName $allDbsJson.Databases.$ddb.dbname -Force -Confirm
     }
+
     Write-Host "Copying database to destination" -ForegroundColor Yellow
 
-    # Copy source database to the target server
-    
     if($ssub)
     {
         $dbFilePathSrc = $curDir + "\"+$ssub+ ".json"
@@ -95,11 +93,7 @@ if(-not($backupOnly))
             Write-Host "Backup of" $allDbsJsonSrc.Databases.$sdb.dbname "is in progress" 
         }
 
-
-        Write-Host "Copying dump of " $allDbsJsonSrc.Databases.$sdb.dbname " to destination subscription" 
-        
         Select-AzureRmSubscription -SubscriptionID $allDbsJson.SubscriptionId
-        
         $importRequest = New-AzureRmSqlDatabaseImport -ResourceGroupName $allDbsJson.Databases.$ddb.resourcegroup -ServerName $allDbsJson.Databases.$ddb.server `
                          -DatabaseName $allDbsJson.Databases.$ddb.dbname -StorageKeyType $allDbsJsonSrc.StorageKeytype -StorageKey $allDbsJsonSrc.StorageKey `
                          -AdministratorLogin $allDbsJson.Server_credentials.($allDbsJson.Databases.$ddb.server).username `
@@ -116,7 +110,6 @@ if(-not($backupOnly))
             
         }
  
-        
     }
     else
     {
