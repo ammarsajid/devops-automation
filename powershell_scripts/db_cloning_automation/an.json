@@ -1,0 +1,259 @@
+{
+	"SubscriptionId": "cac601c4-4a4f-4aa3-939e-2923e23b1cd6",
+	"StorageAccName": "ancloudops",
+	"StorageContainer": "dbbackups",
+	"StorageKeytype": "StorageAccessKey",
+	"StorageKey": "VHt9S600ZjY4qfUb0iWyC6Rswf6uVDSsoIIicY4n5GDyiIjJ/rE4GRV9meAZvk9L97IqzNfQr2m1u51beCP2wQ==",
+	"Databases": {
+	
+		"hu_stg": {
+			"resourcegroup": "AN-PREPROD",
+			"server": "an-stg",
+			"dbname": "hu-stg-db"
+		},
+		"eta_stg": {
+			"resourcegroup": "AN-PREPROD",
+			"server": "an-stg",
+			"dbname": "eta-stg-db"
+		},
+		"atlas_dev": {
+			"resourcegroup": "AN-PREPROD",
+			"server": "an-stg",
+			"dbname": "atlas-dev-db"
+		},
+		"iac_stg": {
+			"resourcegroup": "AN-PREPROD",
+			"server": "an-stg",
+			"dbname": "iac-stg-db"
+		},
+		"tip_stg": {
+			"resourcegroup": "AN-PREPROD",
+			"server": "an-stg",
+			"dbname": "tip-stg-db"
+		},
+		"sbsn_stg": {
+			"resourcegroup": "AN-PREPROD",
+			"server": "an-stg",
+			"dbname": "sbsn-stg-db"
+		},
+		"atlas_stg": {
+			"resourcegroup": "AN-PREPROD",
+			"server": "an-stg",
+			"dbname": "atlas-stg-db"
+		},
+		"lacas_stg": {
+			"resourcegroup": "AN-PREPROD",
+			"server": "an-stg",
+			"dbname": "lacas-stg-db"
+		},
+		"tmuc_stg": {
+			"resourcegroup": "AN-PREPROD",
+			"server": "an-stg",
+			"dbname": "tmuc-stg-db"
+		},
+		"brains_stg": {
+			"resourcegroup": "AN-PREPROD",
+			"server": "an-stg",
+			"dbname": "brain-stg-db"
+		},
+		"pide_stg": {
+			"resourcegroup": "AN-PREPROD",
+			"server": "an-stg",
+			"dbname": "pide-stg"
+		},
+		"rlmc_stg": {
+			"resourcegroup": "AN-PREPROD",
+			"server": "an-stg",
+			"dbname": "rlmc-stg"
+		},
+		"qarshi_stg": {
+			"resourcegroup": "AN-PREPROD",
+			"server": "an-stg",
+			"dbname": "qarshi-stg"
+		},
+		"avicenna_stg": {
+			"resourcegroup": "AN-PREPROD",
+			"server": "an-stg",
+			"dbname": "Avicenna-stg"
+		},
+		"ssuet_stg": {
+			"resourcegroup": "AN-PREPROD",
+			"server": "an-stg",
+			"dbname": "ssuet-stag"
+		},
+		"stmu_stg1": {
+			"resourcegroup": "AN-PREPROD",
+			"server": "an-stg",
+			"dbname": "stmu-stg"
+		},
+		"stmu_stg2": {
+			"resourcegroup": "AN-PREPROD",
+			"server": "an-stg",
+			"dbname": "stmu-stg-2"
+		},
+		"ivs_stg": {
+			"resourcegroup": "AN-PREPROD",
+			"server": "an-stg",
+			"dbname": "ivs-stg-db"
+		},
+		"sbsn_dev": {
+			"resourcegroup": "AN-PREPROD",
+			"server": "an-stg",
+			"dbname": "sbsn-dev-db"
+		},
+		"educor_demo": {
+			"resourcegroup": "AN-PREPROD",
+			"server": "an-stg",
+			"dbname": "educor-demo-db"
+		},
+		"cecos_stg": {
+			"resourcegroup": "AN-PREPROD",
+			"server": "an-stg",
+			"dbname": "cecos-uat-db"
+		},
+		"tip_dev": {
+			"resourcegroup": "AN-PREPROD",
+			"server": "an-stg",
+			"dbname": "tip-dev-db"
+		},
+		"Release_db": {
+			"resourcegroup": "AN-PREPROD",
+			"server": "an-stg",
+			"dbname": "release-db"
+		},
+		"rmi_stg": {
+			"resourcegroup": "AN-PREPROD",
+			"server": "an-stg",
+			"dbname": "rmi-stg-db"
+		},
+		"numl_demo": {
+			"resourcegroup": "AN-PROD",
+			"server": "an-prod",
+			"dbname": "rmi-demo-db"
+		},	
+		"iac_prod": {
+			"resourcegroup": "AN-PROD",
+			"server": "an-prod",
+			"dbname": "atlas-prod-db"
+		},
+		"atlas_prod": {
+			"resourcegroup": "AN-PROD",
+			"server": "an-prod",
+			"dbname": "iac-prod-db"
+		},
+		"brains_prod": {
+			"resourcegroup": "AN-PROD",
+			"server": "an-prod",
+			"dbname": "brains-prod-db"
+		},
+		"avicenna_prod": {
+			"resourcegroup": "AN-PROD",
+			"server": "an-prod",
+			"dbname": "Avicenna-prod"
+		},
+		"tmuc_prod": {
+			"resourcegroup": "AN-PROD",
+			"server": "an-prod",
+			"dbname": "tmuc-prod-db"
+		},
+		"umdc_prod": {
+			"resourcegroup": "AN-PROD",
+			"server": "an-prod",
+			"dbname": "umdc-prod"
+		},
+		"stmu_prod": {
+			"resourcegroup": "AN-PROD",
+			"server": "an-prod",
+			"dbname": "stmu-prod-db"
+		},
+		"qarshi_prod": {
+			"resourcegroup": "AN-PROD",
+			"server": "an-prod",
+			"dbname": "qarshi-prod-db"
+		},
+		"ssuet_prod": {
+			"resourcegroup": "AN-PROD",
+			"server": "an-prod",
+			"dbname": "ssuet-prod-db"
+		},
+		"rmi_prod": {
+			"resourcegroup": "AN-PROD",
+			"server": "an-prod",
+			"dbname": "rmi-prod-db"
+		},
+		"rlmc_prod": {
+			"resourcegroup": "AN-PROD",
+			"server": "an-prod",
+			"dbname": "rlmc-prod"
+		},
+		"ivs_prod": {
+			"resourcegroup": "AN-PROD",
+			"server": "an-prod",
+			"dbname": "ivs-prod-db"
+		},
+
+		"cecos_prod": {
+			"resourcegroup": "AN-PROD",
+			"server": "an-prod",
+			"dbname": "cecos-prod-db"
+		},
+		"lacas_prod": {
+			"resourcegroup": "AN-PROD",
+			"server": "an-prod",
+			"dbname": "lacas-prod-db"
+		},
+		"pide_prod": {
+			"resourcegroup": "AN-PROD",
+			"server": "an-prod",
+			"dbname": "pide-prod-db"
+		},
+		"eta_prod": {
+			"resourcegroup": "AN-PROD",
+			"server": "an-prod",
+			"dbname": "eta-prod-db"
+		},
+		"sbsn_prod": {
+			"resourcegroup": "AN-PROD",
+			"server": "an-prod",
+			"dbname": "sbsn-prod-db"
+		},
+		"testing_stg": {
+			"resourcegroup": "AN-PREPROD",
+			"server": "an-stg",
+			"dbname": "auto-cloning-stg"
+		},
+		"testing_dev": {
+			"resourcegroup": "AN-PREPROD",
+			"server": "an-devserver",
+			"dbname": "auto-cloning-dev"
+		},
+		"testing_prod": {
+			"resourcegroup": "AN-PROD",
+			"server": "an-prod",
+			"dbname": "auto-cloning-prod"
+		},
+		"testing_create": {
+			"resourcegroup": "AN-PREPROD",
+			"server": "an-stg",
+			"dbname": "auto-cloning-create"
+		}
+	},
+	"Server_credentials" : {
+		"an-prod": {
+			"username": "proddbadmin",
+			"password": "SgM3qpMHutUtpF",
+			"ElasticPoolName":  "AN-Prod-Pool"
+		},
+		"an-stg": {
+			"username": "dbadmin",
+			"password": "stDSHklLxoq13",
+			"ElasticPoolName":  "AN-Staging-Pool"
+		},
+		"an-devserver": {
+			"username": "devdbadmin",
+			"password": "yeDmHKlXxoq13",
+			"ElasticPoolName":  "NA"
+		}
+	}	
+	
+}
