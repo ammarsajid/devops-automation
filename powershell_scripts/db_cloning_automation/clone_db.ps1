@@ -56,39 +56,39 @@ if(-not($new))
     }
     Write-Host "Backup completed, URL:" $BacpacUri -ForegroundColor Green
 
-    
-    if(-not($backupOnly))
-    {
-        Write-Host "Deleting database" $allDbsJson.Databases.$ddb.dbname -ForegroundColor Yellow
-        Remove-AzureRmSqlDatabase -ResourceGroupName $allDbsJson.Databases.$ddb.resourcegroup -ServerName $allDbsJson.Databases.$ddb.server `
-            -DatabaseName $allDbsJson.Databases.$ddb.dbname -Force -Confirm
-    
-        if($restoreURL)
-        {
-            $importRequest = New-AzureRmSqlDatabaseImport -ResourceGroupName $allDbsJson.Databases.$ddb.resourcegroup -ServerName $allDbsJson.Databases.$ddb.server `
-                             -DatabaseName $allDbsJson.Databases.$ddb.dbname -StorageKeyType $allDbsJson.StorageKeytype -StorageKey $allDbsJson.StorageKey `
-                             -AdministratorLogin $allDbsJson.Server_credentials.($allDbsJson.Databases.$ddb.server).username `
-                             -AdministratorLoginPassword  ($allDbsJson.Server_credentials.($allDbsJson.Databases.$ddb.server).password | ConvertTo-SecureString -AsPlainText -Force )`
-                             -StorageUri $restoreURL –Edition Standard –ServiceObjectiveName S0 -DatabaseMaxSizeBytes 200000000
-
-            [int]$impStatusctr = 0
-            $impStatus = Get-AzureRmSqlDatabaseImportExportStatus -OperationStatusLink $importRequest.OperationStatusLink
-            while ($impStatus.Status -ne 'Succeeded')
-            {
-                Write-Host "Restoration of" $($allDbsJson.Databases.$ddb.dbname) "is in progress" 
-                start-sleep -Milliseconds 300
-                $impStatus = Get-AzureRmSqlDatabaseImportExportStatus -OperationStatusLink $importRequest.OperationStatusLink
-            
-            }
-        }
-    }
-
 }
 
 if(-not($backupOnly))
 {
     
-    if(!$restoreURL)
+    if(-not($new))
+    {
+        Write-Host "Deleting database" $allDbsJson.Databases.$ddb.dbname -ForegroundColor Yellow
+        Remove-AzureRmSqlDatabase -ResourceGroupName $allDbsJson.Databases.$ddb.resourcegroup -ServerName $allDbsJson.Databases.$ddb.server `
+            -DatabaseName $allDbsJson.Databases.$ddb.dbname -Force -Confirm
+    }
+
+    if($restoreURL)
+    {
+        
+        $importRequest = New-AzureRmSqlDatabaseImport -ResourceGroupName $allDbsJson.Databases.$ddb.resourcegroup -ServerName $allDbsJson.Databases.$ddb.server `
+                            -DatabaseName $allDbsJson.Databases.$ddb.dbname -StorageKeyType $allDbsJson.StorageKeytype -StorageKey $allDbsJson.StorageKey `
+                            -AdministratorLogin $allDbsJson.Server_credentials.($allDbsJson.Databases.$ddb.server).username `
+                            -AdministratorLoginPassword  ($allDbsJson.Server_credentials.($allDbsJson.Databases.$ddb.server).password | ConvertTo-SecureString -AsPlainText -Force )`
+                            -StorageUri $restoreURL –Edition Standard –ServiceObjectiveName S0 -DatabaseMaxSizeBytes 200000000
+
+        $impStatus = Get-AzureRmSqlDatabaseImportExportStatus -OperationStatusLink $importRequest.OperationStatusLink
+        while ($impStatus.Status -ne 'Succeeded')
+        {
+            Write-Host "Restoration of" $($allDbsJson.Databases.$ddb.dbname) "is in progress" 
+            start-sleep -Milliseconds 300
+            $impStatus = Get-AzureRmSqlDatabaseImportExportStatus -OperationStatusLink $importRequest.OperationStatusLink
+            
+        }
+        
+    }
+    
+    else
     {
         Write-Host "Copying database to destination" -ForegroundColor Yellow
 
@@ -126,7 +126,6 @@ if(-not($backupOnly))
                              -AdministratorLoginPassword  ($allDbsJson.Server_credentials.($allDbsJson.Databases.$ddb.server).password | ConvertTo-SecureString -AsPlainText -Force )`
                              -StorageUri $BacpacUriSrc –Edition Standard –ServiceObjectiveName S0 -DatabaseMaxSizeBytes 200000000
 
-            [int]$impStatusctr = 0
             $impStatus = Get-AzureRmSqlDatabaseImportExportStatus -OperationStatusLink $importRequest.OperationStatusLink
             while ($impStatus.Status -ne 'Succeeded')
             {
