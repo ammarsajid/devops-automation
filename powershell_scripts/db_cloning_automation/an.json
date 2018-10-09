@@ -131,12 +131,12 @@
 			"server": "an-prod",
 			"dbname": "rmi-demo-db"
 		},	
-		"iac_prod": {
+		"atlas_prod": {
 			"resourcegroup": "AN-PROD",
 			"server": "an-prod",
 			"dbname": "atlas-prod-db"
 		},
-		"atlas_prod": {
+		"iac_prod": {
 			"resourcegroup": "AN-PROD",
 			"server": "an-prod",
 			"dbname": "iac-prod-db"
