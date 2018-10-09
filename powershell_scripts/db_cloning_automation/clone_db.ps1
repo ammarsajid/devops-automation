@@ -50,7 +50,7 @@ if(-not($new))
     $exportStatus = Get-AzureRmSqlDatabaseImportExportStatus -OperationStatusLink $exportRequest.OperationStatusLink
     while ($exportStatus.Status -ne 'Succeeded')
     {
-        start-sleep -s 5
+        start-sleep -s 10
         $exportStatus = Get-AzureRmSqlDatabaseImportExportStatus -OperationStatusLink $exportRequest.OperationStatusLink
         Write-Host "Backup of" $allDbsJson.Databases.$ddb.dbname "is in progress" 
     }
@@ -81,7 +81,7 @@ if(-not($backupOnly))
         while ($impStatus.Status -ne 'Succeeded')
         {
             Write-Host "Restoration of" $($allDbsJson.Databases.$ddb.dbname) "is in progress" 
-            start-sleep -Milliseconds 300
+            start-sleep -s 10
             $impStatus = Get-AzureRmSqlDatabaseImportExportStatus -OperationStatusLink $importRequest.OperationStatusLink
             
         }
@@ -114,7 +114,7 @@ if(-not($backupOnly))
             $exportStatus = Get-AzureRmSqlDatabaseImportExportStatus -OperationStatusLink $exportRequest.OperationStatusLink
             while ($exportStatus.Status -ne 'Succeeded')
             {
-                start-sleep -s 5
+                start-sleep -s 10
                 $exportStatus = Get-AzureRmSqlDatabaseImportExportStatus -OperationStatusLink $exportRequest.OperationStatusLink
                 Write-Host "Backup of" $allDbsJsonSrc.Databases.$sdb.dbname "is in progress" 
             }
@@ -130,7 +130,7 @@ if(-not($backupOnly))
             while ($impStatus.Status -ne 'Succeeded')
             {
                 Write-Host "Restoration of" $($allDbsJson.Databases.$ddb.dbname) "is in progress" 
-                start-sleep -Milliseconds 300
+                start-sleep -s 10
                 $impStatus = Get-AzureRmSqlDatabaseImportExportStatus -OperationStatusLink $importRequest.OperationStatusLink
             
             }
