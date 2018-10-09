@@ -15,6 +15,11 @@
 			"resourcegroup": "TECHXDBS",
 			"server": "techlogix",
 			"dbname": "auto-cloning-build2"
+		},
+		"atlas_dev_clone": {
+			"resourcegroup": "TECHXDBS",
+			"server": "techlogix",
+			"dbname": "atlas_dev_db_clone"
 		}
 	},
 	"Server_credentials" : {
