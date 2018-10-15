@@ -32,14 +32,15 @@ $allDbsJson = ConvertFrom-Json "$(get-content $dbFilePath)"
 Login-AzureRmAccount
 Select-AzureRmSubscription -SubscriptionID $allDbsJson.SubscriptionId
 
+
+# Storage account info to store BACPAC
+$BaseStorageUri = "https://" + $allDbsJson.StorageAccName + ".blob.core.windows.net/" + $allDbsJson.StorageContainer + "/"
+$bacpacFilename = $allDbsJson.Databases.$ddb.dbname + "-" + (Get-Date).ToString("yyyy-MM-dd-HH-mm") + ".bacpac"
+$BacpacUri = $BaseStorageUri + $bacpacFilename
+$storageContextDest = New-AzureStorageContext -StorageAccountName $allDbsJson.StorageAccName -StorageAccountKey $allDbsJson.StorageKey
+
 if(-not($new))
 {
-    # Storage account info to store BACPAC
-    $BaseStorageUri = "https://" + $allDbsJson.StorageAccName + ".blob.core.windows.net/" + $allDbsJson.StorageContainer + "/"
-    $bacpacFilename = $allDbsJson.Databases.$ddb.dbname + "-" + (Get-Date).ToString("yyyy-MM-dd-HH-mm") + ".bacpac"
-    $BacpacUri = $BaseStorageUri + $bacpacFilename
-    $storageContextDest = New-AzureStorageContext -StorageAccountName $allDbsJson.StorageAccName -StorageAccountKey $allDbsJson.StorageKey
-
     # exporting db to bacpac
     $exportRequest = New-AzureRmSqlDatabaseExport -ResourceGroupName $allDbsJson.Databases.$ddb.resourcegroup $allDbsJson.Databases.$ddb.server `
                         -DatabaseName $allDbsJson.Databases.$ddb.dbname -StorageKeytype $allDbsJson.StorageKeytype -StorageKey $allDbsJson.StorageKey `
