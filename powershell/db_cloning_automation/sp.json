@@ -1,32 +1,27 @@
 {
-	"SubscriptionId": "112667f3-b281-4ede-a2f3-537bbe759911",
-	"StorageAccName": "cloudopsinternal",
-	"StorageContainer": "dbbackups",
+	"SubscriptionId": "121xxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx3",
+	"StorageAccName": "mystorageaccount",
+	"StorageContainer": "backupcontainer",
 	"StorageKeytype": "StorageAccessKey",
-	"StorageKey": "DG3QGPbJexaIBU9B29NF4CcnOjD+Mg/CLyxY9x/N5yiZ3/gnvSM8k0dM+aIBgUKdKnJU7XxfNAHbCQlTrie+QQ==",
+	"StorageKey": "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx==",
 	"Databases": {
 
 		"testing_build": {
-			"resourcegroup": "TECHXDBS",
-			"server": "techlogix",
+			"resourcegroup": "DEVDBS",
+			"server": "mysqlserver",
 			"dbname": "auto-cloning-build"
 		},
 		"testing_build2": {
-			"resourcegroup": "TECHXDBS",
-			"server": "techlogix",
+			"resourcegroup": "DEVDBS",
+			"server": "mysqlserver",
 			"dbname": "auto-cloning-build2"
-		},
-		"atlas_dev_clone": {
-			"resourcegroup": "TECHXDBS",
-			"server": "techlogix",
-			"dbname": "atlas_dev_db_clone"
 		}
 	},
 	"Server_credentials" : {
-		"techlogix": {
-			"username": "techxadmin",
-			"password": "tDnYJcBEPN9eU",
-			"ElasticPoolName":  "techlogix-build-pool"
+		"mysqlserver": {
+			"username": "myusername",
+			"password": "mypassword",
+			"ElasticPoolName":  ""
 		}
 	}	
 	
