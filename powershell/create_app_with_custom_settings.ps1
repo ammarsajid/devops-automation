@@ -1,5 +1,5 @@
-﻿$subscriptionID = "565af59d-9511-40cd-811d-ce91ce902eb5"
-$resourceGroup = "HMIS-TLX"
+﻿$subscriptionID = "cadxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx9"
+$resourceGroup = "TESTRS"
 $appPlanName = "demo"
 $webAppName = "test-app-auto"
 $location = "NorthEurope"

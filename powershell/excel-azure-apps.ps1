@@ -1,5 +1,5 @@
 ﻿Login-AzureRmAccount
-$subscriptionId = "112667f3-b281-4ede-a2f3-537bbe759911"
+$subscriptionId = "123xxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx4"
 Select-AzureRmSubscription -SubscriptionID $subscriptionId
 # Create the Excel doc
 $Excel = New-Object -ComObject Excel.Application
@@ -9,9 +9,9 @@ $chartType = "microsoft.office.interop.excel.xlChartType" -as [type]
 
 $workbook = $excel.workbooks.add()
 
-$workbook.WorkSheets.item(1).Name = "Sponsored Subscription"
+$workbook.WorkSheets.item(1).Name = "Subscription1"
 
-$Worksheet = $workbook.WorkSheets.Item("Sponsored Subscription")
+$Worksheet = $workbook.WorkSheets.Item("Subscription1")
 
 $xlFixedFormat = [Microsoft.Office.Interop.Excel.XlFileFormat]::xlWorkbookDefault
 
