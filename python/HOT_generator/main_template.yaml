@@ -1,0 +1,68 @@
+heat_template_version: 2015-04-30 
+description: Simple template to create a VM
+parameters: 
+resources: 
+  security_group1:
+    type: OS::Neutron::SecurityGroup
+    properties:
+      name: heat_security_grp
+      description: security group for testing
+      rules:
+        - direction: egress
+          ethertype: IPv4
+          protocol: icmp
+        - direction: egress
+          ethertype: IPv4
+          protocol: tcp
+          port_range_min: 22
+          port_range_max: 22
+  router_interface:
+    type: OS::Neutron::RouterInterface
+    properties:
+      router_id: { get_resource: router1 }
+      subnet_id: { get_resource: subnet1 }
+  router_gtateway:
+    type: OS::Neutron::RouterGateway
+    properties:
+      router_id: { get_resource: router1 }
+      network_id: 26c50edd-5d8e-40c2-ae35-d6edfdc7f958
+  router1:
+    type: OS::Neutron::Router
+    properties:
+      name: tenant_router_202
+  floating_ip1:
+    type: OS::Neutron::FloatingIP
+    properties:
+      floating_network_id: 26c50edd-5d8e-40c2-ae35-d6edfdc7f958
+      port_id: { get_resource: port1 }
+  port1:
+    type: OS::Neutron::Port
+    properties:
+      name: port-heat_network
+      network_id: { get_resource: Net1 }
+      security_groups:
+        - default
+        -  { get_resource: security_group1 }
+  subnet1:
+    type: OS::Neutron::Subnet
+    properties:
+      name: heat_subnet
+      network_id: { get_resource: Net1 }
+      cidr: 192.168.202.0/24
+      enable_dhcp: False
+      gateway_ip: 192.168.202.254
+      allocation_pools:
+        - start: 192.168.202.10
+          end: 192.168.202.240
+  Net1:
+    type: OS::Neutron::Net
+    properties:
+      name: heat_network
+  VM1:
+    type: OS::Nova::Server
+    properties:
+      name: test_VM2
+      image: IMS
+      flavor: m1.medium
+      networks:
+        - port: { get_resource: port1 }
