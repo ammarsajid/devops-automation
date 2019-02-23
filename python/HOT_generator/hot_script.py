@@ -3,23 +3,14 @@ import sys
 import json
 from func_defs import *
 
-'''
 try:
 	file = open("configurations.json", 'r')
 except:
-	print "file not found"
+	print "configurations.json file not found"
 	sys.exit()
 
 configurations = json.load(file)
 file.close()
-'''
-
-
-try:
-	configurations = json.loads(sys.argv[1])
-except:
-	print "ERROR loading json data"
-	sys.exit()
 
 hot_generate_basic(configurations['description'])
 
