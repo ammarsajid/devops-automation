@@ -5,7 +5,6 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Net;
 using System.Net.Mail;
-using Microsoft.Azure.WebJobs;
 
 namespace vpn_watcher
 {
@@ -21,22 +20,23 @@ namespace vpn_watcher
                 EnableSsl = true,
                 DeliveryMethod = SmtpDeliveryMethod.Network,
                 UseDefaultCredentials = false,
-                Credentials = new NetworkCredential("azure_xxxxxxxxxxxxxxxxxxxxxxxd@azure.com", "mypassword")
+                Credentials = new NetworkCredential("azure_xxxxxxxxxxxxxxxxxxxxxxx123d@azure.com", "mypassword")
             };
 
+            var ipAddress = System.Net.IPAddress.Parse("10.10.10.10");
+            int destPort = 8201;
             MailMessage mail = new MailMessage();
             mail.To.Add("admin1@domain.com");
             mail.To.Add("admin2@domain.com");
             mail.From = new MailAddress("alert-noreply@azurewebjobs.com");
             mail.Subject = "Production Server Unreachable";
 
-            mail.Body = ("Hi, the production server (192.xxx.xxx.xxx:xxx) is not reachable over the VPN");
+            mail.Body = ("Hi, the production server (10.10.10.10:8201) is not reachable over the VPN");
 
             try
             {
-                var ipAddress = System.Net.IPAddress.Parse("10.10.10.10");
                 var socket = new System.Net.Sockets.TcpClient();
-                socket.Connect(ipAddress, 8201);
+                socket.Connect(ipAddress, destPort);
                 if (socket.Connected)
                 {
                     socket.Close();
