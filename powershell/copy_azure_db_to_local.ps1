@@ -10,8 +10,8 @@ IF (-not $PathVariables.Contains( "C:\Program Files (x86)\Microsoft SQL Server\1
 }
 
 $sqlServerName = "10.x.x.x"
-$AzureSqlServerName = "myazureserver.database.windows.net"
-$AzureSqlDbName = "mydatabase"
+$AzureSqlServerName = "mytestsqlserver.database.windows.net"
+$AzureSqlDbName = "mytestdatabase"
 
 $bacpacFilename =  $AzureSqlDbName + "-" + (Get-Date).ToString("yyyyMMddHHmm") + ".bacpac"
 $bacpacFilePath = [System.Environment]::GetFolderPath([System.Environment+SpecialFolder]::MyDocuments) + "\" + $bacpacFilename
