@@ -1,7 +1,7 @@
 ﻿$subscriptionID = "cadxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx9"
 $resourceGroup = "TESTRS"
-$appPlanName = "demo"
-$webAppName = "test-app-auto"
+$appPlanName = "mytestappserviceplan"
+$webAppName = "mytestwebapp"
 $location = "NorthEurope"
 
 Select-AzureRmSubscription -SubscriptionID $subscriptionID 

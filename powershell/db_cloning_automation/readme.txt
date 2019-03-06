@@ -41,7 +41,7 @@ Create a new database from an existing database across different subscriptions
 > .\clone_db.ps1 -dsub an -ddb testing_stg -ssub sp -sdb testing_build -new
 
 Restore already existing database from bacpac URL
-> .\clone_db.ps1 -dsub sp -ddb testing_build -restoreURL "https://cloudopsinternal.blob.core.windows.net/dbbackups/vic_dev_db-2018-10-09-12-53.bacpac"
+> .\clone_db.ps1 -dsub sp -ddb testing_build -restoreURL "https://myteststorageaccount.blob.core.windows.net/dbbackups/vic_dev_db-2018-10-09-12-53.bacpac"
 
 Create a new database from bacpac URL
-> .\clone_db.ps1 -dsub sp -ddb testing_build -restoreURL "https://cloudopsinternal.blob.core.windows.net/dbbackups/vic_dev_db-2018-10-09-12-53.bacpac" -new
+> .\clone_db.ps1 -dsub sp -ddb testing_build -restoreURL "https://myteststorageaccount.blob.core.windows.net/dbbackups/vic_dev_db-2018-10-09-12-53.bacpac" -new

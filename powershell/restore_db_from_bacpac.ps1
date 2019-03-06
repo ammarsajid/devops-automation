@@ -5,9 +5,9 @@ IF (-not $PathVariables.Contains( "C:\Program Files (x86)\Microsoft SQL Server\1
     $env:Path = $env:Path + ";C:\Program Files (x86)\Microsoft SQL Server\140\DAC\bin;" 
 }
 
-$sqlServerName = "asqlserver"
-$sqlDbName = "mydatabase"
-$bacpacFilePath = "C:\Users\Administrator\Documents\mydatabase-201808281010.bacpac"
+$sqlServerName = "mytestsqlserver.database.windows.net"
+$sqlDbName = "mytestdatabase"
+$bacpacFilePath = "C:\Users\Administrator\Documents\mytestdatabase-201808281010.bacpac"
 
 sqlcmd -S $sqlServerName -U $((Get-StoredCredential -Target $sqlServerName).UserName) -P $((Get-StoredCredential -Target $sqlServerName).GetNetworkCredential().Password) -Q "alter database [$sqlDbName] set single_user with rollback immediate"
 sqlcmd -S $sqlServerName -U $((Get-StoredCredential -Target $sqlServerName).UserName) -P $((Get-StoredCredential -Target $sqlServerName).GetNetworkCredential().Password) -Q "drop DATABASE [$sqlDbName]"

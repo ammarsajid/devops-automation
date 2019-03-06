@@ -8,17 +8,17 @@
 
 		"testing_build": {
 			"resourcegroup": "DEVDBS",
-			"server": "mysqlserver",
+			"server": "mytestsqlserver",
 			"dbname": "auto-cloning-build"
 		},
 		"testing_build2": {
 			"resourcegroup": "DEVDBS",
-			"server": "mysqlserver",
+			"server": "mytestsqlserver",
 			"dbname": "auto-cloning-build2"
 		}
 	},
 	"Server_credentials" : {
-		"mysqlserver": {
+		"mytestsqlserver": {
 			"username": "myusername",
 			"password": "mypassword",
 			"ElasticPoolName":  ""

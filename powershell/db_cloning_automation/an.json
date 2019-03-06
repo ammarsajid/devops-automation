@@ -8,12 +8,12 @@
 
 		"testing_stg": {
 			"resourcegroup": "PREPROD",
-			"server": "mysqlpreprodserver",
+			"server": "mytestsqlserver",
 			"dbname": "auto-cloning-stg"
 		},
 		"testing_dev": {
 			"resourcegroup": "PREPROD",
-			"server": "mysqlpreprodserver",
+			"server": "mytestsqlserver",
 			"dbname": "auto-cloning-dev"
 		},
 		"testing_prod": {
@@ -23,17 +23,17 @@
 		},
 		"testing_create": {
 			"resourcegroup": "PREPROD",
-			"server": "mysqlpreprodserver",
+			"server": "mytestsqlserver",
 			"dbname": "auto-cloning-create"
 		}
 	},
 	"Server_credentials" : {
-		"mysqlpreprodserver": {
+		"mytestsqlserver": {
 			"username": "myusername",
 			"password": "mypassword",
 			"ElasticPoolName":  "server1-elastic-pool"
 		},
-		"mysqlprodserver": {
+		"mytestsqlserver": {
 			"username": "myusername",
 			"password": "mypassword",
 			"ElasticPoolName":  "server2-elastic-pool"
