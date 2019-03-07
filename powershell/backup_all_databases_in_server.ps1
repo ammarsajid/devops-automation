@@ -27,8 +27,8 @@
 		
 		# Database server to export
 		$ResourceGroupName = "TESTRS"
-        $ServerName = "sqlpreprodserver"
-        $Servercredential = Get-AutomationPSCredential -Name 'mysqlpreprodservercredentials'
+        $ServerName = "mytestsqlserver"
+        $Servercredential = Get-AutomationPSCredential -Name 'mytestsqlservercredentials'
         
         Select-AzureRmSubscription -SubscriptionID "cadxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx9"
         $Databases = Get-AzureRmSqlDatabase -ResourceGroupName $ResourceGroupName -ServerName $ServerName | where {$_.DatabaseName -ne 'master'}
