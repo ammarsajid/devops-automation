@@ -1,12 +1,15 @@
-﻿$databasename = "kashf-prod"
-$servername = "tmxmf-kashf"
-$resourcegroupname = "TMX-KASHF-QA"
+﻿$databasename = "mytestdatabase"
+$servername = "mytestsqlserver"
+$resourcegroupname = "TESTRS"
+$pathExportFile = "F:\Automation\" + $databasename + "_utilization" + (get-date).ToString('yyyyMMdd') + ".csv"
 
 #Login-AzureRmAccount
-Select-AzureRmSubscription -SubscriptionID "3c3b8913-a968-4f0c-8d13-d386611bda0b"
+Select-AzureRmSubscription -SubscriptionID "cadxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx9"
 
 $ResourceId = "/subscriptions/$($(Get-AzureRMContext).Subscription.Id)/resourceGroups/$resourcegroupname/providers/Microsoft.Sql/servers/$servername/databases/$databasename"
 $TimeGrain = [TimeSpan]::Parse("00:01:00")
+
+#$available_metrics = Get-AzureRmMetricDefinition -ResourceId $ResourceId
 
 $endTime = [System.DateTime] (get-date)
 $startTime = [System.DateTime] (get-date).AddDays(-32)
@@ -50,8 +53,6 @@ $metrics = for ( $i = 0; $i -lt $metric1.Data.Count; $i++)
 
     }
 }
-$metrics | Export-Csv -Path "F:\Techlogix\Automation\kash_prod_db_utilization20190218.csv"
 
-
-#$available_metrics = Get-AzureRmMetricDefinition -ResourceId $ResourceId
+$metrics | Export-Csv -Path $pathExportFile
 $metrics | select -First 10
