@@ -1,0 +1,70 @@
+# -*- mode: ruby -*-
+# vi: set ft=ruby :
+
+# All Vagrant configuration is done below. The "2" in Vagrant.configure
+# configures the configuration version (we support older styles for
+# backwards compatibility). Please don't change it unless you know what
+# you're doing.
+Vagrant.configure("2") do |config|
+  config.vm.define "master_node" do |vm1|
+    vm1.vm.hostname = "master-node"
+    vm1.vm.box = "ubuntu/trusty64"
+	vm1.vm.network "private_network", ip: "192.168.1.10"
+	
+    vm1.vm.provider "virtualbox" do |vb|
+	  vb.gui = false
+	  vb.memory = "1024"
+    end
+	
+	vm1.vm.provision "shell", inline: <<-SHELL
+		echo "Hello World"
+    SHELL
+  end
+  
+ 
+  config.vm.define "slave_node1" do |vm2|
+    vm2.vm.hostname = "slave-node1"
+    vm2.vm.box = "ubuntu/trusty64"
+	vm2.vm.network "private_network", ip: "192.168.1.20"
+	
+    vm2.vm.provider "virtualbox" do |vb|
+	  vb.gui = false
+	  vb.memory = "1024"
+    end
+	
+	vm2.vm.provision "shell", inline: <<-SHELL
+		echo "Hello World"
+    SHELL
+  end  
+  
+  
+  config.vm.define "slave_node2" do |vm3|
+    vm3.vm.hostname = "slave-node2"
+    vm3.vm.box = "ubuntu/trusty64"
+	vm3.vm.network "private_network", ip: "192.168.1.30"
+	
+    vm3.vm.provider "virtualbox" do |vb|
+	  vb.gui = false
+	  vb.memory = "1024"
+    end
+	
+	vm3.vm.provision "shell", inline: <<-SHELL
+		echo "Hello World"
+    SHELL
+  end
+  # NOTE: This will enable public access to the opened port
+  # config.vm.network "forwarded_port", guest: 80, host: 8080
+  # config.vm.network "forwarded_port", guest: 80, host: 8080, host_ip: "127.0.0.1"
+
+  # Create a private network, which allows host-only access to the machine
+  # using a specific IP.
+  # config.vm.network "private_network", ip: "192.168.33.10"
+
+
+  # Share an additional folder to the guest VM. The first argument is
+  # the path on the host to the actual folder. The second argument is
+  # the path on the guest to mount the folder. And the optional third
+  # argument is a set of non-required options.
+  # config.vm.synced_folder "../data", "/vagrant_data"
+
+end
