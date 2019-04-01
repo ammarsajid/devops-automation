@@ -13,6 +13,8 @@ $vm = Get-AzureRmVM -ResourceGroupName $resourceGroupName -Name $vmName
  
 Stop-AzureRmVM -ResourceGroupName $resourceGroupName -Name $vmName
 
+# We have only one disk at [0]th location but you could have more.
+# In that case, you can change the index number
 $vm.StorageProfile.DataDisks[0].DiskSizeGB = $newDiskSize
  
 Update-AzureRmVM -ResourceGroupName $resourceGroupName -VM $vm
